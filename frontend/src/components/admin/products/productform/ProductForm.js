@@ -3,14 +3,20 @@ import MyEditor from "../../../layout/classiceditor/MyEditor";
 import SelectCategore from "../../category/allCategory/assets/SelectCategore";
 import { Button } from "@material-ui/core";
 import { CharCount } from "../../../layout/CharCount/CharCount";
-const ProductForm = (
+import { useDispatch, useSelector } from "react-redux";
+import { useAlert } from "react-alert";
+import { createNewProduct } from "../../../../actions/ProductAction";
 
-    {currentData}
-) => {
+const ProductForm = ({ currentData }) => {
+  const dispatch = useDispatch();
+  const alert = useAlert();
+
+  const { images } = useSelector((state) => state.selectedImages);
+
   const [inputValue, setinputValue] = useState({
     parent: "",
   });
-
+  console.log(inputValue)
   const [tags, setTags] = useState([]);
   const [open, setOpen] = useState(false);
   //   const editor = useRef(null);
@@ -101,7 +107,7 @@ const ProductForm = (
   const [price, setPrice] = useState("");
   const [stock, setStock] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
-  const [parent, setparent] = useState("");
+  const parent = inputValue.parent;
   const [metalink, setMetalink] = useState("");
   const [metadec, setMetadec] = useState("");
   const [keywords, setKeywords] = useState([]);
@@ -109,36 +115,46 @@ const ProductForm = (
   const [article, setArticle] = useState("");
   const [content, setContent] = useState("");
 
-  console.log(
-    name,
-    price,
-    stock,
-    maxPrice,
-    metalink,
-    metadec,
-    keywords,
-    inputValue.parent,
-    metatitle,
-    content,
-    article
-  );
-
   const createProduct = (e) => {
-e.preventDefault();
-const obj = {
-    name,
-    price,
-    stock,
-    maxPrice,
-    metalink,
-    metadec,
-    keywords,
-    parent:inputValue.parent,
-    metatitle,
-    content,
-    article
-}
-currentData(obj)
+    e.preventDefault();
+    const imageIds = images && images.map((item) => item._id);
+    if (
+      name.trim() === "" ||
+      price.trim() === "" ||
+      maxPrice.trim() === "" ||
+      parent.trim() === "" ||
+      stock.trim() === "" ||
+      metatitle.trim() === "" ||
+      keywords.trim() === "" ||
+      metalink.trim() === "" ||
+      metadec.trim() === "" ||
+      article.trim() === "" ||
+      content.trim() === "" ||
+      (imageIds ?? []).length === 0)
+     {
+      return alert.error(
+        "Please fill out all required fields and upload at least one image. "
+      );
+    }
+    let metaUrl = metalink.split(" ").join("-").toLowerCase();
+
+    dispatch(
+      createNewProduct(
+        name,
+        price,
+        maxPrice,
+        content,
+        article,
+        parent,
+        imageIds,
+        stock,
+        metatitle,
+        keywords,
+        metaUrl,
+        metadec,
+        
+      )
+    );
   };
 
   return (

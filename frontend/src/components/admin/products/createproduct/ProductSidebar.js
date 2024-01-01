@@ -1,22 +1,25 @@
 import React, { useState } from "react";
 import { imagePrimary } from "../../../../actions/imageGelleryAction";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export const ProductSidebar = ({ selectedImage }) => {
-  console.log(selectedImage)
   const [checkPrimary, setcheckPrimary] = useState("");
   const [isVisibal, setIsVisibal] = useState(null);
   const dispatch = useDispatch();
+  const { loading, images, error } = useSelector(
+    (state) => state.selectedImages
+  );
   const handlePrimary = (item, i) => {
     setIsVisibal(i);
     setcheckPrimary(item._id);
     dispatch(imagePrimary(item._id));
   };
 
+
   return (
     <>
-      {selectedImage &&
-        selectedImage.map((item, i) => (
+      {images &&
+        images.map((item, i) => (
           <div
             onClick={() => {
               handlePrimary(item);
@@ -31,10 +34,10 @@ export const ProductSidebar = ({ selectedImage }) => {
         ))}
 
       <div className="non-Primary-containor">
-        {selectedImage &&
-          selectedImage.map((item, i) => (
+        {images &&
+          images.map((item, i) => (
             <div
-            className={isVisibal===i?'non-Primary-inactive':null}
+              className={isVisibal === i ? "non-Primary-inactive" : null}
               onClick={() => {
                 handlePrimary(item, i);
               }}

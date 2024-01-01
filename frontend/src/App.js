@@ -52,7 +52,7 @@ import AllCategory from "./components/admin/category/allCategory/AllCategory";
 import UpdateCategory from "./components/admin/category/updateCtegory/UpdateCategory";
 import BottomNav from "./components/layout/BottomNav/BottomNav";
 import Editor from "./components/admin/editor/Editor";
-import { ImageUploaderForm } from "./components/admin/ImageGellery/uploadimage/ImageUploaderForm";
+import ImageUploader from "./components/admin/ImageGellery/uploadimage/ImageUploader";
 
 
 
@@ -243,7 +243,7 @@ function App() {
                 <Route
                   path="/admin/upload/media-new"
                   element={
-                    <ProtectedRoute isAdmin={true} Component={ImageUploaderForm} />
+                    <ProtectedRoute isAdmin={true} Component={ImageUploader} />
                   }
                 />
                     <Route

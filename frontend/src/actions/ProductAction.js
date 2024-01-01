@@ -205,41 +205,54 @@ export const adminGetAllProducts = () => async (dispatch) => {
 
 export const createNewProduct =
   (
+    // name,
+    // price,
+    // maxprice,
+    // description,
+    // article,
+    // parent,
+    // avatar,
+    // stock,
+    // metatitle,
+    // keyword,
+    // metalink,
+    // metadec,
+    // imageIds,
+    // selectedImage
+
     name,
     price,
-    maxprice,
-    description,
+    maxPrice,
+    content,
     article,
     parent,
-    avatar,
+    imageIds,
     stock,
     metatitle,
-    keyword,
-    metalink,
+    keywords,
+    metaUrl,
     metadec,
-    imageIds,
-    selectedImage
   ) =>
   async (dispatch) => {
     
     try {
       dispatch({ type: NEW_PRODUCT_FAIL });
-      console.log(imageIds);
+  
       const formData = new FormData();
 
       // Append other fields
       formData.append("name", name);
       formData.append("price", price);
-      formData.append("maxprice", maxprice);
-      formData.append("description", description);
+      formData.append("maxprice", maxPrice);
+      formData.append("description", content);
       formData.append("article", article);
       formData.append("category", parent);
       formData.append("stock", stock);
       formData.append("metatitle", metatitle);
-      formData.append("metalink", metalink);
-      formData.append("keyword", keyword);
+      formData.append("metalink", metaUrl);
+      formData.append("keyword", keywords);
       formData.append("metadec", metadec);
-      formData.append("selectedImage", selectedImage);
+      // formData.append("selectedImage", selectedImage);
       // formData.append("imageId", imageIds);
 
       // Append each file individually
@@ -265,7 +278,7 @@ export const createNewProduct =
     } catch (error) {
       dispatch({
         type: NEW_PRODUCT_FAIL,
-        payload: error.response.data.message,
+        payload: error,
       });
     }
   };

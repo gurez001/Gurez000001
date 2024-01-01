@@ -2,9 +2,7 @@
   text-align: center;
   margin-top: 20px;
 }
-.section-cont {
-  background: #f5f5f5;
-}
+
 .section-cont form {
   background: #fff;
   border: none;
@@ -48,18 +46,17 @@
   border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   padding: 8px;
-  background: #f5f5f5;
+  background: var(--g-white);
 }
 .shipping-form .input-list input[type="submit"] {
   cursor: pointer;
   transition: all 0.3s ease-in;
+  background: var(--G-green);
   font-weight: 600;
   font-size: 18px;
+  color: var(--g-white);
 }
-.shipping-form .input-list input[type="submit"]:hover {
-  background: #e31e25;
-  color: #fff;
-}
+
 .pay-cont {
   max-width: 700px;
   margin: 30px auto;

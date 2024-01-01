@@ -16,7 +16,6 @@ exports.getAllImages = catchAsyncError(async (req, res, next) => {
     // Execute the query
     let images = await apiFetures.query;
 
-   
     res.status(200).json({
       success: true,
       images,
@@ -32,7 +31,7 @@ exports.createImageGellery = catchAsyncError(async (req, res, next) => {
   try {
     const { userid } = req.body;
 
-    console.log(req.body,req.files)
+    console.log(req.body, req.files);
     const productCounter = await countModel.findOne({ entityName: "User" });
 
     const images = [];
@@ -54,7 +53,6 @@ exports.createImageGellery = catchAsyncError(async (req, res, next) => {
       //imagesPath.push(item.path);
     });
 
-
     const imagesGellery = await imageGelleryModel.create(images);
 
     res.status(201).json({
@@ -62,7 +60,6 @@ exports.createImageGellery = catchAsyncError(async (req, res, next) => {
       imagesGellery,
     });
   } catch (error) {
-
     return next(
       new ErrorHandler("Product - Internal Server Error" + error, 500)
     );
@@ -73,12 +70,11 @@ exports.createImageGellery = catchAsyncError(async (req, res, next) => {
 
 exports.updateImageGellery = catchAsyncError(async (req, res, next) => {
   try {
-
     const { altText, title, caption } = req.body;
     const updatedImage = await imageGelleryModel.findOneAndUpdate(
       { _id: id },
       {
-        filename:title,
+        filename: title,
         altText,
         title,
         caption,
@@ -87,15 +83,29 @@ exports.updateImageGellery = catchAsyncError(async (req, res, next) => {
     if (!updatedImage) {
       return next(new ErrorHandler("Image not found", 404));
     }
- 
+
     res.status(200).json({
       success: true,
       message: "Image updated successfully",
     });
   } catch (error) {
- 
     return next(
       new ErrorHandler("Product - Internal Server Error" + error, 500)
+    );
+  }
+});
+
+exports.getImageFromIds = catchAsyncError(async (req, res, next) => {
+  try {
+    const { ids } = req.body;
+    const image = await imageGelleryModel.find({ _id: { $in: ids } });
+    res.status(200).json({
+      success: true,
+      image,
+    });
+  } catch (error) {
+    return next(
+      new ErrorHandler("Product - Internal Server Error" + error, 404)
     );
   }
 });

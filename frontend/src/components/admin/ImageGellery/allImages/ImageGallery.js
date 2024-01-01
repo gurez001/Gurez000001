@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   clearErrors,
   getAllImages,
+  getImageId,
 } from "../../../../actions/imageGelleryAction";
 import { useAlert } from "react-alert";
 import Pagination from "react-js-pagination";
@@ -35,6 +36,29 @@ const ImageGallery = () => {
   const handleImageSelection = (index) => {
     setSelectIds((old) => [...old, index]);
   };
+
+  const newImageIds = [];
+  function SelectImageIds(index) {
+    const countMap = {};
+    const evenStrings = [];
+    const oddStrings = [];
+
+    for (let i = 0; i < index.length; i++) {
+      const str = index[i];
+      countMap[str] = (countMap[str] || 0) + 1;
+    }
+
+    for (const key in countMap) {
+      if (countMap[key] % 2 === 0) {
+        evenStrings.push(key);
+      } else {
+        oddStrings.push(key);
+      }
+    }
+
+    dispatch(getImageId(oddStrings));
+  }
+  SelectImageIds(selectIds);
 
   const imageRenderer = ({ index, left, top, key, photo }) => (
     <SelectedImage
@@ -94,7 +118,7 @@ const ImageGallery = () => {
               </div>
               <h1>Image Gellery</h1>
             </div>
-              <p>No of media {images && images.length}</p>
+            <p>No of media {images && images.length}</p>
 
             <div className="gallery-containor">
               <div>

@@ -8,7 +8,7 @@ import { GiBeerBottle } from "react-icons/gi";
 
 export const NavList = ({ toggleContentRemove }) => {
   const data = useParams();
-  console.log(data);
+
   const dispatch = useDispatch();
 
   const {

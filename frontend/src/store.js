@@ -72,13 +72,14 @@ const reducer = combineReducers({
   uploadImage: imageUploadReducer,
   updateImage: imageUpdateReducer,
   updateImageText: imageTextUpdateReducer,
-  selectImage: selectImageeReducer,
+  selectedImages: selectImageeReducer,
   forgetPassword: forgetPasswordReducer,
   resetPassword: resetPasswordReducer,
   wishList: WishListReducer,
   productFeature: featureProductReducer,
   adminCategore:newCategoreReducer,
-  allCategroe:getAllCategoriesReducer
+  allCategroe:getAllCategoriesReducer,
+  
 });
 let inialState = {
   cart: {

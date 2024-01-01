@@ -52,7 +52,7 @@ const Categories = ({ categories, categoriesHeandler, clearFilter }) => {
           {allcategroes &&
             allcategroes.map((item, i) => (
               <li key={i}>
-                <NavLink to={`/product-category/${item.slug}`}>
+                <NavLink to={`/product-category/${item.slug}`} className="parent-cate-list">
                   {item.name}
                 </NavLink>
                 <ul>

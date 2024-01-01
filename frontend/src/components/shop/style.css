@@ -28,6 +28,27 @@ aside {
 .p-sho-cont .product-card {
   width: 100%;
 }
+.product-card {
+  position:relative
+}
+.product-card_btn {
+  
+  bottom:10px;
+  width:100%;
+}
+.shop-page .product-details h3{
+  margin: 5px 0 0 0;
+ 
+}
+.shop-page .product-details h3 a{
+width: 260px;
+  white-space: nowrap;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+  font-weight: 600;
+}
 
 .pagination {
   display: flex;
@@ -53,6 +74,7 @@ aside {
 .p-sho-cont {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 550px 550px;
   gap: 10px;
 }
 @media only screen and (max-width: 900px) {

@@ -25,10 +25,11 @@ function ApplyCoupen({ setCoupon, setCouponValid, subtotal, setDiscounted }) {
 
   return (
     <>
-      <div>
+      <div className="apply-coupon">
         <input
           type="text"
           value={data}
+          placeholder="Enter coulpen code"
           onChange={(e) => setData(e.target.value)}
         />
         <Button onClick={inputData}>Apply coupon</Button>

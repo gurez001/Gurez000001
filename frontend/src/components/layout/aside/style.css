@@ -19,17 +19,35 @@
 }
 
 .aside-price-categories li {
-  padding: 10px;
+  padding: 3px 10px;
   margin: 1px 0;
   cursor: pointer;
   text-transform: uppercase;
   transition: all 0.3s ease-in;
   border-radius: 10px;
 }
-.aside-price-categories li:hover {
-  background: #e21e219c;
-  color: #fff;
+.parent-cate-list {
+  padding: 10px 15px 10px 5px;
+  border-radius: 10px;
+  margin: 1px 0;
+  font-weight: 600;
+  font-size: 16px;
 }
+.parent-cate-list:hover {
+  background: var(--G-green);
+  color: var(--g-white) !important;
+}
+.aside-price-categories ul ul li a {
+  font-size: 14px;
+}
+
+.aside-price-categories ul ul li:hover {
+  background: var(--G-green);
+}
+.aside-price-categories ul ul li:hover a {
+  color: var(--g-white) !important;
+}
+
 .cat-active {
   padding: 10px;
   background: #e21e219c;
@@ -55,21 +73,14 @@
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   border-radius: 7px;
 }
-.MuiSlider-root {
-  color: #e31f23 !important;
-}
 
-.filter-ac button:hover {
-  background: #e31e25;
-  color: #fff;
-}
 .filter-ac button {
   width: 100%;
   padding: 10px;
   border-radius: 5px;
-  border: 1px solid #0000004d;
+
   margin-top: 20px;
-  background: transparent;
+
   font-size: 16px;
   cursor: pointer;
   font-weight: 600;

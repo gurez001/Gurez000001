@@ -10,9 +10,12 @@
   text-align: center;
   margin: 30px 0;
 }
+.oder-left, .oder-right{
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
 .oder-left p,
 .order-summery-conf-area p {
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
   margin: 02 0;
   padding: 10px;
   display: flex;
@@ -38,6 +41,7 @@
 }
 .conf-col {
   width: 45%;
+  padding: 20px;
 }
 
 .conf-prod-area p,
@@ -46,6 +50,7 @@
 }
 .conf-prod-area p {
   font-weight: 600;
+ 
 }
 
 .conf-prod-area {
@@ -75,7 +80,7 @@
   border-bottom: 1px solid #00000030;
 }
 .order-summery-conf button {
-  background: #fff;
+ 
   width: 100%;
   font-weight: 600;
   padding: 10px 0;
@@ -83,12 +88,33 @@
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   transition: all 0.3s ease-in;
 }
-
-.order-summery-conf button:hover {
-  background: #e31e25 !important;
-  color: #fff;
+.addrs-info p , .h-us-info p{
+  border-bottom: 1px solid #eee;
 }
 
+/* Apply coupon page */
+
+.apply-coupon{
+  display: flex;
+  gap: 20px;
+}
+.apply-coupon input{
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid;
+}
+.apply-coupon button{
+  background: var(--G-green);
+  color: var(--g-white);
+  padding: 10px;
+  width: 40%;
+  border:1px solid var(--G-green);
+}
+.apply-coupon button:hover{
+background: var(--g-white);
+color: var(--G-green);
+
+}
 @media only screen and (max-width: 870px) {
   .conf-containor {
     flex-direction: column;

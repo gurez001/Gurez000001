@@ -10,13 +10,14 @@ import {
   UPDATE_IMAGE_RESET,
   UPDATE_IMAGE_SUCCESS,
   UPDATE_IMAGE_REQUEST,
-  SET_SELECTED_IMAGE,
   UPLOAD_IMAGE_RESET,
-  SET_SELECTED_IMAGE_RESET,
   UPDATE_TEXT_REQUEST,
   UPDATE_TEXT_SUCCESS,
   UPDATE_TEXT_FAIL,
   UPDATE_TEXT_RESET,
+  IMAGE_ID_REQUEST,
+  IMAGE_ID_SUCCESS,
+  IMAGE_ID_FAIL,
 } from "../constants/imageGelleryCartConstants";
 
 export const getAllImageReducer = (state = { images: [] }, action) => {
@@ -52,7 +53,7 @@ export const getAllImageReducer = (state = { images: [] }, action) => {
   }
 };
 
-export const imageUploadReducer = (state = { }, action) => {
+export const imageUploadReducer = (state = {}, action) => {
   switch (action.type) {
     case UPLOAD_IMAGE_REQUEST:
       return {
@@ -71,13 +72,13 @@ export const imageUploadReducer = (state = { }, action) => {
         loading: false,
         error: action.payload,
       };
-      case UPLOAD_IMAGE_RESET:
-        return {
-          ...state,
-          loading: false,
-          images: null,
-        };
-  
+    case UPLOAD_IMAGE_RESET:
+      return {
+        ...state,
+        loading: false,
+        images: null,
+      };
+
     case IMAGE_CLEAR:
       return {
         ...state,
@@ -89,98 +90,101 @@ export const imageUploadReducer = (state = { }, action) => {
   }
 };
 
-
-
-
-export const imageUpdateReducer = (state = { }, action) => {
+export const imageUpdateReducer = (state = {}, action) => {
   switch (action.type) {
-      case UPDATE_IMAGE_REQUEST:
-        return {
-          ...state,
-          loading: true,
-        };
-      case UPDATE_IMAGE_SUCCESS:
-        return {
-          loading: false,
-          isUpdate: action.payload,
-        };
-      case UPDATE_ORDER_FAIL:
-        return {
-          ...state,
-          loading: false,
-          error: action.payload,
-        };
-      case UPDATE_IMAGE_RESET:
-        return {
-          ...state,
-          loading: false,
-          isUpdate: false,
-        };
-  
-        case IMAGE_CLEAR:
-        return {
-          ...state,
-          error: null,
-        };
-
-    default:
-      return state;
-  }
-};
-
-
-
-export const imageTextUpdateReducer = (state = { }, action) => {
-  switch (action.type) {
-      case UPDATE_TEXT_REQUEST:
-        return {
-          ...state,
-          loading: true,
-        };
-      case UPDATE_TEXT_SUCCESS:
-        return {
-          loading: false,
-          isUpdate: action.payload,
-        };
-
-        case UPDATE_TEXT_FAIL:
-          return {
-            loading: false,
-            isUpdate: action.payload,
-          };
-
-          case UPDATE_TEXT_RESET:
-            return {
-              loading: false,
-              isUpdate: null,
-            };
-     
-        case IMAGE_CLEAR:
-        return {
-          ...state,
-          error: null,
-        };
-
-    default:
-      return state;
-  }
-};
-
-
-export const selectImageeReducer = (state = { }, action) => {
-  switch (action.type) {
-    case SET_SELECTED_IMAGE:
+    case UPDATE_IMAGE_REQUEST:
       return {
         ...state,
-        selectedImage: action.payload,
+        loading: true,
       };
-      case SET_SELECTED_IMAGE_RESET:
-        return {
-          ...state,
-          selectedImage: null,
-        };
-   
+    case UPDATE_IMAGE_SUCCESS:
+      return {
+        loading: false,
+        isUpdate: action.payload,
+      };
+    case UPDATE_ORDER_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    case UPDATE_IMAGE_RESET:
+      return {
+        ...state,
+        loading: false,
+        isUpdate: false,
+      };
+
+    case IMAGE_CLEAR:
+      return {
+        ...state,
+        error: null,
+      };
+
     default:
       return state;
   }
 };
+
+export const imageTextUpdateReducer = (state = {}, action) => {
+  switch (action.type) {
+    case UPDATE_TEXT_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case UPDATE_TEXT_SUCCESS:
+      return {
+        loading: false,
+        isUpdate: action.payload,
+      };
+
+    case UPDATE_TEXT_FAIL:
+      return {
+        loading: false,
+        isUpdate: action.payload,
+      };
+
+    case UPDATE_TEXT_RESET:
+      return {
+        loading: false,
+        isUpdate: null,
+      };
+
+    case IMAGE_CLEAR:
+      return {
+        ...state,
+        error: null,
+      };
+
+    default:
+      return state;
+  }
+};
+
+export const selectImageeReducer = (state = {}, action) => {
+  switch (action.type) {
+    case IMAGE_ID_REQUEST:
+      return {
+        ...state,
+        loading:true
+      };
+    case IMAGE_ID_SUCCESS:
+      return {
+        ...state,
+        loading:false,
+        images: action.payload,
+      };
+    case IMAGE_ID_FAIL:
+      return {
+        ...state,
+        loading:false,
+        error: action.payload,
+      };
+
+    default:
+      return state;
+  }
+};
+
+

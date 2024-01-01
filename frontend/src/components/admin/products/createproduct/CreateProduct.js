@@ -28,9 +28,11 @@ export const CreateProduct = () => {
   const alert = useAlert();
   const [open, setOpen] = useState(false);
   const { loding, error, success } = useSelector((state) => state.newProduct);
-  const { loading, selectedImage } = useSelector((state) => state.selectImage);
-  const { images } = useSelector((state) => state.uploadImage);
+  // const { loading, selectedImage } = useSelector((state) => state.selectImage);
+  // const { images } = useSelector((state) => state.uploadImage);
 
+
+  
   // dispatch(
   //   createNewProduct(
   //     name,
@@ -128,7 +130,7 @@ export const CreateProduct = () => {
                               open={open}
                               close={handleImageClickClose}
                             />
-                            <ProductSidebar selectedImage={selectedImage} />
+                            <ProductSidebar  />
                           </div>
                         </div>
                       </>

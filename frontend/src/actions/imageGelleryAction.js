@@ -2,6 +2,9 @@ import axios from "axios";
 import {
   IMAGE_CLEAR,
   IMAGE_FAIL,
+  IMAGE_ID_FAIL,
+  IMAGE_ID_REQUEST,
+  IMAGE_ID_SUCCESS,
   IMAGE_REQUEST,
   IMAGE_SUCCESS,
   SET_SELECTED_IMAGE,
@@ -19,7 +22,6 @@ import {
 export const getAllImages =
   (currentPage = 1) =>
   async (dispatch) => {
-  
     try {
       dispatch({ type: IMAGE_REQUEST });
 
@@ -39,14 +41,14 @@ export const uploadImage = (avatar, user) => async (dispatch) => {
   try {
     dispatch({ type: UPLOAD_IMAGE_REQUEST });
     const formData = new FormData();
-    console.log(avatar)
+    console.log(avatar);
     formData.append("userid", user);
     // Append each file individually
     for (let i = 0; i < avatar.length; i++) {
       formData.append("avatar", avatar[i].file);
-      console.log(avatar[i])
+      console.log(avatar[i]);
     }
-     
+
     const config = {
       headers: {
         "Content-Type": "multipart/form-data",
@@ -58,7 +60,6 @@ export const uploadImage = (avatar, user) => async (dispatch) => {
       config
     );
     dispatch({ type: UPLOAD_IMAGE_SUCCESS, payload: data.imagesGellery });
-
   } catch (err) {
     dispatch({
       type: UPLOAD_IMAGE_FAIL,
@@ -97,7 +98,6 @@ export const updateImageText =
   };
 
 export const imagePrimary = (id) => async (dispatch) => {
-
   try {
     dispatch({ type: UPDATE_IMAGE_REQUEST });
 
@@ -124,6 +124,28 @@ export const setSelectedImage = (imageData) => ({
   type: SET_SELECTED_IMAGE,
   payload: imageData,
 });
+
+export const getImageId = (ids) => async (dispatch) => {
+  console.log(ids)
+  try {
+    dispatch({ type: IMAGE_ID_REQUEST });
+    if(ids.length>0){
+      const { data } = await axios.post("/api/v1/admin/images/ids", { ids });
+      dispatch({ type: IMAGE_ID_SUCCESS,payload:data.image    });
+    }
+  } catch (err) {
+    dispatch({ type: IMAGE_ID_FAIL });
+  }
+};
+
+// export const getSelectedImage = () => async (dispatch) => {
+//   try {
+  
+//     dispatch({ type: SET_SELECTED_IMAGE, payload: id });
+//   } catch (err) {
+//     dispatch({ type: SET_SELECTED_FAIL });
+//   }
+// };
 
 export const clearErrors = () => async (dispatch) => {
   dispatch({ type: IMAGE_CLEAR });

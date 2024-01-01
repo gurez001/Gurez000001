@@ -63,18 +63,15 @@
 .product-card_btn button {
   width: 80%;
   padding: 10px;
-  border: 1px solid #0000004d;
+
   border-radius: 99px;
-  background: transparent;
+
   font-size: 16px;
   cursor: pointer;
   font-weight: 600;
   transition: all 0.3s ease-in;
 }
-.product-card_btn button:hover {
-  background: #e31e25;
-  color: #fff;
-}
+
 .product-details {
   padding: 10px;
 }
@@ -181,32 +178,30 @@
 .grid-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px; 
+  gap: 10px;
   width: 100%;
 }
 #homepage .prod-collem {
   width: 100%;
   margin-bottom: 40px;
 }
-.prod-card-img .prod-wish{
-  position:absolute;
-  bottom:-50px;
-   transition:all 0.3s ease-in;
-  width:100%;
-  background: linear-gradient(-180deg,rgba(234,237,237,0),#aee031);
+.prod-card-img .prod-wish {
+  position: absolute;
+  bottom: -50px;
+  transition: all 0.3s ease-in;
+  width: 100%;
+  background: linear-gradient(-180deg, rgba(234, 237, 237, 0), #aee031);
   /* display:none; */
-  
 }
-.prod-card-img .prod-wish svg{
-font-size:30px;
-  transition:all 0.3s ease-in;
+.prod-card-img .prod-wish svg {
+  font-size: 30px;
+  transition: all 0.3s ease-in;
 }
-.product-card:hover .prod-card-img .prod-wish{
-  display:block;
-    bottom:0px;
-  transition:all 0.3s ease-in;
+.product-card:hover .prod-card-img .prod-wish {
+  display: block;
+  bottom: 0px;
+  transition: all 0.3s ease-in;
 }
-
 
 @media only screen and (max-width: 1082px) {
   .rev-are {
@@ -222,7 +217,7 @@ font-size:30px;
 }
 
 @media only screen and (max-width: 767px) {
-.grid-container {
+  .grid-container {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -232,7 +227,6 @@ font-size:30px;
 }
 
 @media only screen and (max-width: 550px) {
-
   .grid-container {
     grid-template-columns: repeat(1, 1fr);
   }
